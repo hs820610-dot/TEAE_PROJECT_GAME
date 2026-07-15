@@ -4,6 +4,7 @@ import com.project.game.dto.QnADTO;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 
@@ -37,12 +38,26 @@ public interface QnAMapper {
     int  QnADelete(@Param("noQnA") int  noQnA);
 
     @Update("""
-            UPDATE LOL_QNA SET GAME_TITLE = #{titleQnA}, GAME_CONTENT = #{contentQnA}, GAME_PASSWD = #{passwdQnA}
+            UPDATE LOL_QNA
+                SET GAME_TITLE = #{titleQnA}, GAME_CONTENT = #{contentQnA},
+                    GAME_PASSWD = COALESCE(#{passwdQnA}, GAME_PASSWD)
             WHERE GAME_NO = #{noQnA}
             """)
-    @UpdateProvider(type = QnASqlProvider.class, method = "")
     int  QnAUpdate(QnADTO qnaDTO);
 
+    @Update("UPDATE LOL_QNA SET GAME_recommend = GAME_recommend+1 WHERE GAME_NO = #{noQnA}")
+    int hitsUpdate(@Param("noQnA") int noQnA);
+
+    @Update("UPDATE LOL_QNA SET GAME_hits = GAME_hits+1 WHERE GAME_NO = #{noQnA}")
+    int recommendUpdate(@Param("noQnA") int noQnA);
+
+    @ResultMap("QnAResult")
+    @Select("""
+            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, GAME_DATE, GAME_hits, GAME_recommend
+            FROM FROM LOL_QNA WHERE GAME_NO = #{noQnA}
+            WHERE 
+            """)
+    Optional<QnADTO> QnADetail(@Param("noQnA") int noQnA);
 
 
 
