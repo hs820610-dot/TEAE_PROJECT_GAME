@@ -1,4 +1,4 @@
-package com.project.TEAE_PROJECT_GAME;
+package com.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
