@@ -1,0 +1,49 @@
+package com.project.game.mapper;
+
+import com.project.game.dto.QnADTO;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
+
+@Mapper
+
+public interface QnAMapper {
+    @Results(id="QnAResult", value = {
+            @Result(property = "noQnA", column = "GAME_NO"),
+            @Result(property = "titleQnA", column = "GAME_TITLE"),
+            @Result(property = "contentQnA", column = "GAME_CONTENT"),
+            @Result(property = "writerQnA", column = "GAME_WRITER"),
+            @Result(property = "dateQnA", column = "GAME_DATE"),
+            @Result(property = "hitsQnA", column = "GAME_hits"),
+            @Result(property = "recommendQnA", column = "GAME_recommend"),
+            @Result(property = "passwdQnA", column = "GAME_PASSWD")
+    })
+    @Select("""
+            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, GAME_DATE, GAME_hits, GAME_recommend
+            FROM LOL_QNA ORDER BY GAME_NO DESC
+            """)
+    List<QnADTO> QnAList();
+
+    @Insert("""
+            INSERT INTO LOL_QNA(GAME_TITLE, GAME_CONTENT, GAME_WRITER, GAME_PASSWD)
+            VALUES (#{titleQnA}, #{contentQnA}, #{writerQnA}, #{passwdQnA})
+            """)
+    @Options(useGeneratedKeys = true, keyProperty = "noQnA", keyColumn = "GAME_NO")
+    int QnAInsert(QnADTO qnaDTO);
+
+    @Delete("""
+            DELETE FROM LOL_QNA WHERE GAME_NO = #{noQnA}
+            """)
+    int  QnADelete(@Param("noQnA") int  noQnA);
+
+    @Update("""
+            UPDATE LOL_QNA SET GAME_TITLE = #{titleQnA}, GAME_CONTENT = #{contentQnA}, GAME_PASSWD = #{passwdQnA}
+            WHERE GAME_NO = #{noQnA}
+            """)
+    @UpdateProvider(type = QnASqlProvider.class, method = "")
+    int  QnAUpdate(QnADTO qnaDTO);
+
+
+
+
+}
