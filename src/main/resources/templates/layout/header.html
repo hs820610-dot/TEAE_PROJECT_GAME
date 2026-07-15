@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>공통으로 쓸 헤더</title>
+<link rel="stylesheet" th:href="@{/css/common.css}">
+</head>
+<header th:fragment="header">
+    <h3>롤 인벤</h3>
+    <nav>
+        <a th:href="@{/}">자유 게시판</a>
+
+        <a th:href="@{/}">QNA</a>
+
+        <a th:href="@{/}">패치노트</a>
+    </nav>
+</header>
+</html>

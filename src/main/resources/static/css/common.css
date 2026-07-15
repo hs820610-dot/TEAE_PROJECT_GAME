@@ -1,0 +1,52 @@
+/* 기본 여백 초기화 및 폰트 설정 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* 헤더 전체 영역 스타일 */
+header {
+    display: flex;
+    justify-content: space-between; /* 로고와 메뉴를 양 끝으로 정렬 */
+    align-items: center;            /* 세로 가운데 정렬 */
+    padding: 15px 40px;
+    background-color: #1a1c21;      /* 어두운 네이비 그레이 톤 */
+    border-bottom: 3px solid #d4b106; /* 롤 느낌의 골드 포인트 라인 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 로고 타이틀 (롤 인벤) */
+header h3 {
+    color: #f0e6d2;                 /* 미색/골드빛 글씨색 */
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(212, 177, 6, 0.3);
+}
+
+/* 메뉴 네비게이션 영역 */
+header nav {
+    display: flex;
+    gap: 30px;                      /* 메뉴 간격 */
+}
+
+/* 메뉴 링크 공통 스타일 */
+header nav a {
+    color: #a0a5b1;                 /* 차분한 회색 */
+    text-decoration: none;          /* 밑줄 제거 */
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;      /* 부드러운 전환 효과 */
+}
+
+/* 메뉴에 마우스를 올렸을 때 (Hover) */
+header nav a:hover {
+    color: #ffffff;                 /* 글씨색 하얗게 */
+    background-color: #2a2e38;      /* 살짝 밝은 배경 추가 */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
