@@ -30,5 +30,10 @@
         WHERE GAME_NO = #{patchNumber}
     </update>
 
+    <delete id="patchDelete" parameterType="int">
+        DELETE FROM LOL_PATCH
+        WHERE GAME_NO = #{patchNumber}
+    </delete>
+
 
 </mapper>

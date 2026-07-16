@@ -12,4 +12,5 @@ public interface PatchNoteMapper {
     List<PatchNoteDTO> patchList();
     Optional<PatchNoteDTO> patchDetail(@Param("patchNumber") int patchNumber);
     int upHits(@Param("patchNumber") int patchNumber);
+    int patchDelete(@Param("patchNumber") int patchNumber);
 }
