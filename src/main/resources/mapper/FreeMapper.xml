@@ -20,6 +20,14 @@
         ORDER BY game_no DESC
     </select>
 
+    <select id="freeDetail" parameterType="int" resultMap="resultMap">
+        SELECT
+        game_no, game_title, game_content, game_writer, game_date, game_hits, game_recommend, game_passwd
+        FROM
+            LOL
+        WHERE game_no = #{gameNo}
+    </select>
+
     <insert id="freeInsert" parameterType="com.project.game.dto.FreeDTO">
         INSERT INTO LOL(game_title, game_content, game_writer, game_passwd)
         VALUES (#{gameTitle}, #{gameContent}, #{gameWriter}, #{gamePasswd})

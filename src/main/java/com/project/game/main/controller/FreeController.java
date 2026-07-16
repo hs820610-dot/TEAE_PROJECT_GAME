@@ -37,10 +37,24 @@ public class FreeController {
         return "redirect:/LOL/free";
     }
 
-    @GetMapping("/free/board")
-    public String board(Model model) {
-        List<FreeDTO> list = freeService.freeList();
-        model.addAttribute("list", list);
-        return "client/free/readboard";
+    @GetMapping("/free/detail/{gameNo}")
+    public String detail(@PathVariable int gameNo, Model model) {
+        FreeDTO freeDTO = freeService.freeDetail(gameNo);
+        model.addAttribute("free", freeDTO);
+
+        return "client/free/detail";
+    }
+
+    @PostMapping("/free/delete/{gameNo}")
+    public String detailDelete(@PathVariable int gameNo) {
+        freeService.freeDelete(gameNo);
+
+        return "redirect:/LOL/free";
+    }
+
+    @PostMapping("/free/update/{gameNo}")
+    public String detailUpdate(FreeDTO freeDTO) {
+        freeService.freeUpdate(freeDTO);
+        return "redirect:/LOL/free";
     }
 }

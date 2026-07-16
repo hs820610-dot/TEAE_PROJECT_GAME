@@ -9,6 +9,8 @@ import java.util.List;
 public interface FreeMapper {
     List<FreeDTO> freeList();
 
+    FreeDTO freeDetail(int gameNo);
+
     int freeInsert(FreeDTO freeDTO);
 
     int freeUpdate(FreeDTO freeDTO);

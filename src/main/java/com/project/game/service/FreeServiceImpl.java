@@ -18,6 +18,11 @@ public class FreeServiceImpl implements FreeService {
     }
 
     @Override
+    public FreeDTO freeDetail(int gameNo) {
+        return freeMapper.freeDetail(gameNo);
+    }
+
+    @Override
     public int freeInsert(FreeDTO freeDTO) {
         return freeMapper.freeInsert(freeDTO);
     }

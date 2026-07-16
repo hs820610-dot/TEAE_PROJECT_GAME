@@ -16,5 +16,6 @@ public interface FreeService {
 
     int freeDelete(int gameNo);
 
+    FreeDTO freeDetail(int gameNo);
 
 }
