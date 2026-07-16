@@ -15,12 +15,12 @@ import java.util.List;
 @RequestMapping("/LOL")
 @RequiredArgsConstructor
 public class MainController {
-    private FreeService freeService;
+    private final FreeService freeService;
 
     @GetMapping("/main")
     public String main(Model model) {
         List<FreeDTO> list = freeService.freeList();
         model.addAttribute("list", list);
-        return "free/main";
+        return "client/free/freeBoard";
     }
 }
