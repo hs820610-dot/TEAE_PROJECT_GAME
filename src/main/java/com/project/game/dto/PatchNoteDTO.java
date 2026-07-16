@@ -1,6 +1,6 @@
 package com.project.game.dto;
 
-public class patchNoteDTO {
+public class PatchNoteDTO {
     private int patchNumber; //번호
     private String patchTitle; //제목
     private String patchContent; //내용

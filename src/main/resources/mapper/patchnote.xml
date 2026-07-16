@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.project.game.mapper.patchNoteMapper">
-    <resultMap id="patchNoteResult" type="com.project.game.dto.patchNoteDTO">
+<mapper namespace="com.project.game.mapper.PatchNoteMapper">
+    <resultMap id="patchNoteResult" type="com.project.game.dto.PatchNoteDTO">
         <result property="patchNumber" column="game_no" />
         <result property="patchTitle" column="game_title" />
         <result property="patchContent" column="game_content" />
-        <result property="patchWriter" column="game_write" />
+        <result property="patchWriter" column="game_writer" />
         <result property="patchDate" column="game_date" />
         <result property="patchHits" column="game_hits" />
         <result property="patchRecommend" column="game_recommend" />
         <result property="patchPasswd" column="game_passwd" />
     </resultMap>
+
+    <select id="patchList" resultMap="patchNoteResult">
+            SELECT GAME_NO, GAME_TITLE, GAME_WRITER, TO_CHAR(GAME_DATE, 'YYYY-MM-DD')AS GAME_DATE,
+            GAME_HITS FROM LOL_PATCH
+            ORDER BY GAME_NO DESC
+    </select>
 
 
 </mapper>
