@@ -20,6 +20,7 @@ public class FreeMapperTest {
         freeMapper.freeList().forEach(free -> {
             log.info(free.toString());
         });
+
     }
 
     @Test
