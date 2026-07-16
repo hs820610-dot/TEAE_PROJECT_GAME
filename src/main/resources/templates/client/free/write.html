@@ -11,7 +11,7 @@
     <section class="container" layout:fragment="content">
         <h3 class="text-left">자유게시판</h3>
 
-        <form th:action="@{/LOL/free/write}" method="post">
+        <form th:action="@{/LOL/free/write}" method="post" id="writeForm">
             <div class="mb-3">
                 <label for="writeTitle" class="form-label">제목</label>
                 <input type="text" id="writeTitle" name="gameTitle" class="form-control" placeholder="제목을 입력하세요.">
@@ -23,11 +23,11 @@
                 <textarea id="writeContent" class="form-control" name="gameContent" rows="10" placeholder="내용을 입력하세요"></textarea>
             </div>
             <div class="mb-3">
-                <label for="writeTitle" class="form-label">작성자</label>
-                <input type="text" id="writeWrite" class="form-control" name="gameWriter" placeholder="작성자명을 입력하세요.">
+                <label for="writeWriter" class="form-label">작성자</label>
+                <input type="text" id="writeWriter" class="form-control" name="gameWriter" placeholder="작성자명을 입력하세요.">
             </div>
             <div class="mb-3">
-                <label for="writeTitle" class="form-label">비밀번호</label>
+                <label for="writePasswd" class="form-label">비밀번호</label>
                 <input type="text" id="writePasswd" class="form-control" name="gamePasswd" placeholder="비밀번호를 입력하세요.">
             </div>
             <div class="text-end">
@@ -36,7 +36,6 @@
             </div>
         </form>
     </section>
-
 
 </body>
 </html>
