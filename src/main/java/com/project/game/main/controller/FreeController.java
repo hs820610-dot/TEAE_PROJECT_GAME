@@ -5,10 +5,7 @@ import com.project.game.service.FreeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -52,9 +49,20 @@ public class FreeController {
         return "redirect:/LOL/free";
     }
 
-    @PostMapping("/free/update/{gameNo}")
-    public String detailUpdate(FreeDTO freeDTO) {
-        freeService.freeUpdate(freeDTO);
-        return "redirect:/LOL/free";
+    @GetMapping("/free/update/{gameNo}")
+    public String updateForm(@PathVariable int gameNo, Model model) {
+        FreeDTO free = freeService.freeDetail(gameNo); // 상세 조회
+        model.addAttribute("free", free);
+
+        return "client/free/update";
     }
+
+    @PostMapping("/free/update/{gameNo}")
+    public String update(@ModelAttribute FreeDTO freeDTO) {
+        int num = freeDTO.getGameNo();
+        freeService.freeUpdate(freeDTO);
+
+        return "redirect:/LOL/free/detail/" + num;
+    }
+
 }

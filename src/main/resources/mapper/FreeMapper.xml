@@ -35,7 +35,7 @@
 
     <update id="freeUpdate" parameterType="com.project.game.dto.FreeDTO">
         UPDATE lol SET
-            game_title = #{gameTitle}, game_content = #{gameContent}, game_writer = #{gameWriter}, game_passwd = #{gamePasswd}
+            game_title = #{gameTitle}, game_content = #{gameContent}
         WHERE
             game_no = #{gameNo}
     </update>
