@@ -8,25 +8,47 @@
 </head>
 <body>
     <section layout:fragment="content">
-        <br>
-        <br>
-        <h2>글 작성</h2>
-        <br>
-        <table>
-            <tr>
-                <th><label for="titleQnA">제목</label></th>
-                <td><input type="text" class="form-control" id="titleQnA" name="titleQnA" ></td>
-            </tr>
-            <tr>
-                <th><label for="writerQnA">작성자</label></th>
-                <td><input type="text" class="form-control" id="writerQnA" name="writerQnA"></td>
-                <th><label for="passwdQnA">비밀번호</label></th>
-                <td><input type="password" class="form-control" id="passwdQnA" name="passwdQnA"></td>
-            </tr>
-            <tr>
-                <th><label for="contentQnA">본문(내용)</label></th>
-                <td><textarea class="form-control" id="contentQnA" name="contentQnA" placeholder="내용을 입력하세요"></textarea></td>
-            </tr>
-        </table>
+        <div class=" w-75 mb-4 mx-auto">
+            <br>
+            <br>
+            <h2>글 작성</h2>
+            <br>
+            <form method="post" th:action="@{/game/QnAWrite}" id="QnAInsertForm">
+                <table class="table table-borderless">
+                    <tr>
+                        <th><label for="titleQnA">제목</label></th>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><input type="text" class="form-control" id="titleQnA" name="titleQnA" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="align-middle text-nowrap" style="width: 1%;"><label for="writerQnA">작성자</label></th>
+                        <td><div class="d-flex" style="width: 200px;">
+                            <input type="text" class="form-control" id="writerQnA" name="writerQnA" required></div></td>
+                        <th  class="align-middle text-nowrap" style="width: 1%;"><label for="passwdQnA">비밀번호</label></th>
+                        <td class="w-100"><div class="d-flex" style="width: 200px;">
+                            <input type="password" class="form-control" id="passwdQnA" name="passwdQnA" required></div></td>
+                    </tr>
+                    <tr>
+                        <th><label for="contentQnA">본문</label></th>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><textarea class="form-control" id="contentQnA" name="contentQnA" required
+                                                  placeholder="내용을 입력하세요"
+                                                  style="resize: none; height: 15rem;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="pt-4">
+                            <div class="d-flex justify-content-end gap-2">
+                            <button type="submit" id="QnAInsertButton" class="btn btn-primary btn-md">게시</button>
+                            <a href="/game/QnAList" class="btn btn-danger btn-md">취소</a>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
     </section>
 </body>
+</html>

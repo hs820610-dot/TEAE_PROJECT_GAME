@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+    <title>상세 조회</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <br>
+        <br>
+        <table th:object="${qnADTO}" class="table table-sm table-borderless w-75 mx-auto">
+            <form name="dataForm" id="dataForm" method="get">
+                <input type="hidden" id="noQnA" name="noQnA" th:value="*{noQnA}">
+            </form>
+            <tr>
+                <th th:text="*{noQnA}" style="font-size: 15px"></th>
+            </tr>
+            <tr>
+                <th th:text="*{titleQnA}" colspan="2" style="font-size: 24px"></th>
+            </tr>
+            <tr>
+                <td colspan="2" class="text-secondary py-2">
+                    <div class="d-flex">
+                        <div class="me-auto">
+                            <span th:text="*{writerQnA}"></span>
+                            <span th:text="*{dateQnA}" class="ms-5"></span>
+                        </div>
+                        <div class="d-flex justify-content-end align-items-center gap-2">
+                            <span th:text="*{recommendQnA}" id="recommendCount"></span>
+                            <button type="button" id="QnARecommendButton" class="btn btn-outline-danger btn-sm">추천</button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="border rounded p-4 bg-light shadow-sm" style="min-height: 200px; white-space: pre-wrap;
+                    text-align: left;" th:text="*{contentQnA}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div class="border rounded p-4 bg-danger-subtle shadow-sm" style="min-height: 200px; white-space: pre-wrap;
+                    text-align: left;" th:text="*{contentQnA}"></div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="pt-4">
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" id="QnAUpdateButton" class="btn btn-success btn-md">수정</button>
+                        <button type="button" id="QnADeleteButton" class="btn btn-danger btn-md">삭제</button>
+                        <a href="/game/QnAList" class="btn btn-outline-dark btn-md">목록</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </section>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/QnAHit.js}" defer></script>
+    </th:block>
+</body>
+</html>

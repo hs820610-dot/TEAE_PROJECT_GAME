@@ -31,4 +31,27 @@ public class QnAServiceImpl implements QnAService {
     public int QnAUpdate(QnADTO qnaDTO) {
         return qnAMapper.QnAUpdate(qnaDTO);
     }
+
+    @Override
+    public QnADTO QnADetail(int noQnA) {
+        qnAMapper.hitsUpdate(noQnA);
+        QnADTO qnADTO = qnAMapper.QnADetail(noQnA)
+                .orElseThrow(()->new IllegalArgumentException("해당 게시물이 존재하지 않습니다."));
+        return qnADTO;
+    }
+
+    @Override
+    public int hitsUpdate(int noQnA) {
+        return qnAMapper.hitsUpdate(noQnA);
+    }
+
+    @Override
+    public int recommendUpdate(int noQnA) {
+        return qnAMapper.recommendUpdate(noQnA);
+    }
+
+    @Override
+    public int getRecommend(int noQnA) {
+        return qnAMapper.getRecommend(noQnA);
+    }
 }

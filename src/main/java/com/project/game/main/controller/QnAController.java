@@ -5,9 +5,7 @@ import com.project.game.service.QnAService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,6 +32,27 @@ public class QnAController {
     public String QnAInsert(QnADTO qnADTO, Model model){
         qnAService.QnAInsert(qnADTO);
         return "redirect:/game/QnAList";
+    }
+
+    @GetMapping("/QnAHit/{noQnA}")
+    public String QnAHit(@PathVariable("noQnA") int noQnA, Model model){
+        QnADTO qnADTO = qnAService.QnADetail(noQnA);
+        model.addAttribute("qnADTO", qnADTO);
+        return "game/QnAHit";
+    }
+
+    @PostMapping("/QnAHit/{noQnA}")
+    @ResponseBody
+    public int recommendUpdate(@PathVariable("noQnA") int noQnA, Model model){
+        qnAService.recommendUpdate(noQnA);
+        return qnAService.getRecommend(noQnA);
+    }
+
+    @PostMapping("/QnAdelete/{noQnA}")
+    @ResponseBody
+    public String QnADelete(@PathVariable("noQnA") int noQnA){
+        qnAService.QnADelete(noQnA);
+        return "success";
     }
 
 }

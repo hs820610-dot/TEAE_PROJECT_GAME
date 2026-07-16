@@ -13,4 +13,8 @@ public interface QnAService {
     int QnAInsert(QnADTO qnaDTO);
     int QnADelete(int noQnA);
     int QnAUpdate(QnADTO qnaDTO);
+    QnADTO QnADetail(int noQnA);
+    int hitsUpdate(int noQnA);
+    int recommendUpdate(int noQnA);
+    int getRecommend(int noQnA);
 }
