@@ -17,6 +17,7 @@
             game_no, game_title, game_content, game_writer, game_date, game_hits, game_recommend, game_passwd
         FROM
             LOL
+        ORDER BY game_no DESC
     </select>
 
     <insert id="freeInsert" parameterType="com.project.game.dto.FreeDTO">

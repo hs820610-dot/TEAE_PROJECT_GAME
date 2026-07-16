@@ -11,23 +11,32 @@
     <section class="container" layout:fragment="content">
         <h3 class="text-left">자유게시판</h3>
 
-        <form th:action="@{/LoL/free/write}" method="post">
+        <form th:action="@{/LOL/free/write}" method="post">
             <div class="mb-3">
                 <label for="writeTitle" class="form-label">제목</label>
-                <input type="text" id="writeTitle" class="form-control" placeholder="제목을 입력하세요.">
+                <input type="text" id="writeTitle" name="gameTitle" class="form-control" placeholder="제목을 입력하세요.">
             </div>
             <div class="mb-3" row>
                 <label for="writeContent" class="form-label">
                     내용
                 </label>
-
-                <textarea id="writeContent" class="form-control" rows="10" placeholder="내용을 입력하세요"></textarea>
+                <textarea id="writeContent" class="form-control" name="gameContent" rows="10" placeholder="내용을 입력하세요"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="writeTitle" class="form-label">작성자</label>
+                <input type="text" id="writeWrite" class="form-control" name="gameWriter" placeholder="작성자명을 입력하세요.">
+            </div>
+            <div class="mb-3">
+                <label for="writeTitle" class="form-label">비밀번호</label>
+                <input type="text" id="writePasswd" class="form-control" name="gamePasswd" placeholder="비밀번호를 입력하세요.">
             </div>
             <div class="text-end">
                 <button type="submit" class="btn btn-primary" >등록</button>
-                <a th:href="@{/LoL/free}" class="btn btn-primary">취소</a>
+                <a th:href="@{/LOL/free}" class="btn btn-primary">취소</a>
             </div>
         </form>
     </section>
+
+
 </body>
 </html>
