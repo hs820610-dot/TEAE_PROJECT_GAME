@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       class="h-100">
+
 <head>
     <th:block th:replace="~{layout/config :: config}"></th:block>
-    <th:block layout:fragment="css"></th:block>
-    <th:block layout:fragment="script"></th:block>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
+
     <header th:replace="~{layout/header :: header}"></header>
-    <main class="flex-shrink-0">
+
+    <main class="flex-grow-1">
         <div class="container">
             <th:block layout:fragment="content"></th:block>
         </div>
     </main>
-    <footer th:replace="~{layout/footer :: footer}"></footer>
-</body>
 
+    <footer th:replace="~{layout/footer :: footer}"></footer>
+
+</body>
+</html>
