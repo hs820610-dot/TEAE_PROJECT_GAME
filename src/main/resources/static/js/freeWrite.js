@@ -5,25 +5,31 @@ const writeContent = document.querySelector("#writeContent");
 const writeWriter = document.querySelector("#writeWrite");
 
 writeForm.addEventListener("submit", function (event) {
-    if (writeTitle == "") {
+
+
+    if (writeTitle.value == "") {
+        event.preventDefault();
         alert("제목을 입력하세요.");
         writeTitle.focus();
         return;
     }
 
-    if (writeContent == "") {
+    if (writeContent.value == "") {
+        event.preventDefault();
         alert("내용을 입력하세요.");
         writeContent.focus();
         return;
     }
 
-    if (writePasswd == "") {
+    if (writePasswd.value == "") {
+        event.preventDefault();
         alert("비밀번호를 입력하세요.");
         writePasswd.focus();
         return;
     }
 
-    if (writeWriter == "") {
+    if (writeWriter.value == "") {
+        event.preventDefault();
         alert("작성자를 입력하세요.");
         writeWriter.focus();
         return;

@@ -15,8 +15,8 @@ public class FreeDTO {
     private String gameTitle;
     private String gameContent;
     private String gameWriter;
+    private String gamePasswd;
     private LocalDateTime gameDate;
     private int gameHits;
     private int gameRecommend;
-    private String gamePasswd;
 }
