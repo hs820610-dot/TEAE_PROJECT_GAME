@@ -8,7 +8,11 @@
 
 <body>
     <header th:replace="layout/header :: header"></header>
-
+    <main class="flex-shrink-0">
+        <div class="container">
+            <th:block layout:fragment="content"></th:block>
+        </div>
+    </main>
     <footer th:replace="layout/footer :: footer"></footer>
 </body>
 
