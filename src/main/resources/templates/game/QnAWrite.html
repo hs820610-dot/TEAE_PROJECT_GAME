@@ -8,21 +8,24 @@
 </head>
 <body>
     <section layout:fragment="content">
+        <br>
+        <br>
         <h2>글 작성</h2>
+        <br>
         <table>
             <tr>
                 <th><label for="titleQnA">제목</label></th>
-                <td><input type="text" class="form-control" id="titleQnA"></td>
+                <td><input type="text" class="form-control" id="titleQnA" name="titleQnA" ></td>
             </tr>
             <tr>
                 <th><label for="writerQnA">작성자</label></th>
-                <td><input type="text" class="form-control" id="writerQnA"></td>
+                <td><input type="text" class="form-control" id="writerQnA" name="writerQnA"></td>
                 <th><label for="passwdQnA">비밀번호</label></th>
-                <td><input type="password" class="form-control" id="passwdQnA"></td>
+                <td><input type="password" class="form-control" id="passwdQnA" name="passwdQnA"></td>
             </tr>
             <tr>
                 <th><label for="contentQnA">본문(내용)</label></th>
-                <td><input type="text" class="form-control" id="contentQnA"></td>
+                <td><textarea class="form-control" id="contentQnA" name="contentQnA" placeholder="내용을 입력하세요"></textarea></td>
             </tr>
         </table>
     </section>

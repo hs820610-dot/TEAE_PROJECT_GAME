@@ -20,7 +20,7 @@ public interface QnAMapper {
             @Result(property = "passwdQnA", column = "GAME_PASSWD")
     })
     @Select("""
-            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, GAME_DATE, GAME_hits, GAME_recommend
+            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, GAME_hits, GAME_recommend
             FROM LOL_QNA ORDER BY GAME_NO DESC
             """)
     List<QnADTO> QnAList();
@@ -53,7 +53,7 @@ public interface QnAMapper {
 
     @ResultMap("QnAResult")
     @Select("""
-            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, GAME_DATE, GAME_hits, GAME_recommend
+            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER,  TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, GAME_hits, GAME_recommend
             FROM FROM LOL_QNA WHERE GAME_NO = #{noQnA}
             WHERE 
             """)

@@ -7,29 +7,32 @@
     <title>QnA 홈</title>
 </head>
 <body>
-    <h2>조회</h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">글 번호</th>
-                <th scope="col">제목</th>
-                <th scope="col">작성자</th>
-                <th scope="col">날짜</th>
-                <th scope="col">조회수</th>
-                <th scope="col">추천</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="qna : ${list}" th:object="${qna}">
-                <td th:text="*{noQnA}"></td>
-                <td th:text="*{titleQnA}"></td>
-                <td th:text="*{writerQnA}"></td>
-                <td th:text="*{dateQnA}"></td>
-                <td th:text="*{hitsQnA}"></td>
-                <td th:text="*{recommendQnA}"></td>
-            </tr>
-        </tbody>
-    </table>
-
+    <section layout:fragment="content">
+        <br>
+        <br>
+        <h2>조회</h2>
+        <button type="button" id="QnAWriteButton" class="btn btn-outline-primary btn-md">글 쓰기</button>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">글 번호</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">작성자</th>
+                    <th scope="col">날짜</th>
+                    <th scope="col">조회수</th>
+                    <th scope="col">추천</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="qna : ${list}" th:object="${qna}">
+                    <td th:text="*{noQnA}"></td>
+                    <td th:text="*{titleQnA}"></td>
+                    <td th:text="*{writerQnA}"></td>
+                    <td th:text="*{dateQnA}"></td>
+                    <td th:text="*{hitsQnA}"></td>
+                    <td th:text="*{recommendQnA}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 </body>
