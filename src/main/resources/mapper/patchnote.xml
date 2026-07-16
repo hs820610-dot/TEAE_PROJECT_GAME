@@ -18,5 +18,17 @@
             ORDER BY GAME_NO DESC
     </select>
 
+    <select id="patchDetail" resultMap="patchNoteResult" parameterType="int">
+        SELECT GAME_NO, GAME_TITLE, GAME_CONTENT,TO_CHAR(GAME_DATE, 'YYYY-MM-DD')AS GAME_DATE,
+        GAME_HITS
+        FROM LOL_PATCH
+        WHERE GAME_NO = #{patchNumber}
+    </select>
+
+    <update id="upHits" parameterType="int">
+        UPDATE LOL_PATCH SET GAME_HITS = GAME_HITS + 1
+        WHERE GAME_NO = #{patchNumber}
+    </update>
+
 
 </mapper>

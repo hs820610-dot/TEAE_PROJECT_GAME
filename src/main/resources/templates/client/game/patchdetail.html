@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+                xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+                layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>패치노트 상세페이지</title>
+</head>
+<body>
+    <section layout:fragment="content" class="py-5 mt-5">
+        <div class="mb-4"><h3>패치노트 상세</h3></div>
+
+        <div th:object="${patch}">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-mb-3 text-center align-middle">작성자</td>
+                        <td class="col-mb-3 text-start">
+                            <span th:text="*{patchWriter}"></span>
+                            <span>조회수:<span th:text="*{patchHits}"></span></span>
+                        </td>
+                        <td class="col-md-3 text-center align-middle">작성일</td>
+                        <td class="col-md-3 text-start align-middle" th:text="*{patchDate}"></td>
+                    </tr>
+                    <tr>
+                        <td class="col-mb-3 text-center">글제목</td>
+                        <td colspan="3" class="col-md-9 text-start" th:text="*{patchTitle}"></td>
+                    </tr>
+                    <tr class="board-table-tr-height" style="height: 300px; vertical-align: top; padding: 15px; text-align: center">
+                        <td class="col-mb-3 align-middle text-center">글내용</td>
+                        <td colspan="3" class="col-md-9 text-start board-content" th:utext="*{patchContent}" style="white-space: pre-wrap; text-align: left; padding: 15px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <a th:href="@{/game/patchList}" id="patchListBTN" class="btn btn-outline-secondary">목록으로</a>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>

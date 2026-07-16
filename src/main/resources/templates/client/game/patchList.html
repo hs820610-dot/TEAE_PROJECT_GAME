@@ -7,7 +7,53 @@
     <title>패치노트 리스트</title>
 </head>
 <body>
+    <section layout:fragment="content" class="py-5 mt-5">
 
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h3>패치노트</h3>
+        </div>
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>작성일</th>
+                        <th>조회수</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <!-- 게시글이 없을 때 예외 처리 -->
+                    <tr th:if="${patchList == null or #lists.isEmpty(patchList)}">
+                        <td colspan="5" class="text-center">
+                            게시글이 존재하지 않습니다.
+                        </td>
+                    </tr>
+
+                    <!-- PatchNoteDTO 목록 반복 출력 -->
+                    <tr th:each="patch : ${patchList}">
+                        <!-- 번호 (patchNumber) -->
+                        <td th:text="${patch.patchNumber}"></td>
+
+                        <!-- 제목 (patchTitle) 및 상세 페이지 링크 -->
+                        <td>
+                            <a th:href="@{/game/patch/{patchNumber}(patchNumber=${patch.patchNumber})}"
+                               th:text="${patch.patchTitle}">
+                            </a>
+                        </td>
+
+                        <!-- 작성자 (patchWriter) -->
+                        <td th:text="${patch.patchWriter}"></td>
+
+                        <!-- 작성일 (patchDate) -->
+                        <td th:text="${patch.patchDate}"></td>
+
+                        <!-- 조회수 (patchHits) -->
+                        <td th:text="${patch.patchHits}"></td>
+                    </tr>
+                </tbody>
+            </table>
 
 </body>
 </html>

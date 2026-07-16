@@ -1,5 +1,13 @@
 package com.project.game.dto;
 
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+@NoArgsConstructor
+@Builder
 public class PatchNoteDTO {
     private int patchNumber; //번호
     private String patchTitle; //제목
