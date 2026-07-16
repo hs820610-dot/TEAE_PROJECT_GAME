@@ -36,7 +36,7 @@ public class QnAController {
 
     @GetMapping("/QnAHit/{noQnA}")
     public String QnAHit(@PathVariable("noQnA") int noQnA, Model model){
-        QnADTO qnADTO = qnAService.QnADetail(noQnA);
+        QnADTO qnADTO = qnAService.QnAReDetail(noQnA);
         model.addAttribute("qnADTO", qnADTO);
         return "game/QnAHit";
     }
@@ -48,11 +48,20 @@ public class QnAController {
         return qnAService.getRecommend(noQnA);
     }
 
-    @PostMapping("/QnAdelete/{noQnA}")
+    @PostMapping("/QnADelete/{noQnA}")
     @ResponseBody
     public String QnADelete(@PathVariable("noQnA") int noQnA){
         qnAService.QnADelete(noQnA);
         return "success";
     }
+
+    @PostMapping("/QnAUpdate")
+    public String QnAUpdate(QnADTO qnADTO, String pwd, Model model){
+        int no = qnADTO.getNoQnA();
+        qnAService.QnAUpdate(qnADTO, pwd);
+        model.addAttribute("qnADTO", qnADTO);
+        return "redirect:/game/QnAHit"+no;
+    }
+
 
 }

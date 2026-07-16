@@ -1,6 +1,20 @@
+let actionType = "";
 const QnARecommendButton = document.querySelector("#QnARecommendButton");
 const QnADeleteButton = document.querySelector("#QnADeleteButton");
 const QnAUpdateButton  = document.querySelector("#QnAUpdateButton");
+const pwdArea = document.querySelector("#pwdArea");
+const QnAPassword = document.querySelector("#QnAPassword");
+const QnAPassWordButton = document.querySelector("#QnAPassWordButton");
+
+const hidePwd = () => {
+     if (pwdArea) pwdArea.classList.add("hide-default");
+    QnAPassword.value = "";
+    actionType = "";
+}
+const veiwPwd = () => {
+    pwdArea.classList.remove("hide-default");
+    QnAPassword.focus();
+}
 
 QnARecommendButton.addEventListener("click", async function(){
     const num = document.querySelector("#noQnA").value;
@@ -10,7 +24,7 @@ QnARecommendButton.addEventListener("click", async function(){
         });
 
         if (response.ok) {
-            const reCount = await response.json();
+            const reCount = await response.text();
             const recommend = document.querySelector("#recommendCount");
             recommend.textContent = reCount;
         } else{
@@ -29,10 +43,9 @@ QnADeleteButton.addEventListener("click", async function(){
    const num = document.querySelector("#noQnA").value;
 
    try{
-       const response = await fetch(`/game/QnAdelete/${num}`, {
+       const response = await fetch(`/game/QnADelete/${num}`, {
            method: "POST"
        });
-
        if (response.ok) {
            alert("삭제되었습니다.")
            location.href = "/game/QnAList";
@@ -44,3 +57,11 @@ QnADeleteButton.addEventListener("click", async function(){
         alert("something went wrong!");
    }
 });
+
+
+
+QnAUpdateButton.addEventListener("click", function(){
+
+})
+
+

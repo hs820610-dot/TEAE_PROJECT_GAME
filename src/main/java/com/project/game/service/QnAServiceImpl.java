@@ -1,16 +1,20 @@
 package com.project.game.service;
 
 import com.project.game.dto.QnADTO;
+import com.project.game.dto.ReDTO;
 import com.project.game.mapper.QnAMapper;
+import com.project.game.mapper.ReMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class QnAServiceImpl implements QnAService {
     private final QnAMapper qnAMapper;
+    private final ReMapper reMapper;
 
     @Override
     public List<QnADTO> QnAList() {
@@ -28,16 +32,14 @@ public class QnAServiceImpl implements QnAService {
     }
 
     @Override
-    public int QnAUpdate(QnADTO qnaDTO) {
-        return qnAMapper.QnAUpdate(qnaDTO);
-    }
+    public boolean QnAUpdate(QnADTO qnaDTO,  String pwd) {
+        int no = qnaDTO.getNoQnA();
 
-    @Override
-    public QnADTO QnADetail(int noQnA) {
-        qnAMapper.hitsUpdate(noQnA);
-        QnADTO qnADTO = qnAMapper.QnADetail(noQnA)
-                .orElseThrow(()->new IllegalArgumentException("해당 게시물이 존재하지 않습니다."));
-        return qnADTO;
+        if (!qnaDTO.getPasswdQnA().equals(pwd)) {
+            return false;
+        }
+        qnAMapper.QnAUpdate(qnaDTO);
+        return true;
     }
 
     @Override
@@ -53,5 +55,14 @@ public class QnAServiceImpl implements QnAService {
     @Override
     public int getRecommend(int noQnA) {
         return qnAMapper.getRecommend(noQnA);
+    }
+
+    @Override
+    public QnADTO QnAReDetail(int noQnA) {
+        QnADTO qnADTO = qnAMapper.QnADetail(noQnA)
+                .orElseThrow(()->new IllegalArgumentException("존재하지 않는 게시글입니다."));
+        ReDTO reDTO = reMapper.replyDetail(noQnA);
+        qnADTO.setReDTO(reDTO);
+        return qnADTO;
     }
 }

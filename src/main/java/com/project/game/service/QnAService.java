@@ -12,9 +12,10 @@ public interface QnAService {
     List<QnADTO> QnAList();
     int QnAInsert(QnADTO qnaDTO);
     int QnADelete(int noQnA);
-    int QnAUpdate(QnADTO qnaDTO);
-    QnADTO QnADetail(int noQnA);
+    boolean QnAUpdate(QnADTO qnaDTO, String pwd);
     int hitsUpdate(int noQnA);
     int recommendUpdate(int noQnA);
     int getRecommend(int noQnA);
+    QnADTO QnAReDetail(int noQnA);
+
 }

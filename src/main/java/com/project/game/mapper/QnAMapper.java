@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-
 public interface QnAMapper {
     @Results(id="QnAResult", value = {
             @Result(property = "noQnA", column = "GAME_NO"),
@@ -17,12 +16,7 @@ public interface QnAMapper {
             @Result(property = "dateQnA", column = "dateQnA"),
             @Result(property = "hitsQnA", column = "GAME_hits"),
             @Result(property = "recommendQnA", column = "GAME_recommend"),
-            @Result(property = "passwdQnA", column = "GAME_PASSWD"),
-            @Result(property = "reNoQnA", column = "REPLY_NO"),
-            @Result(property = "reContentQnA", column = "REPLY_CONTENT"),
-            @Result(property = "reWriterQnA", column = "REPLY_WRITER"),
-            @Result(property = "reDateQnA", column = "REPLY_DATE"),
-            @Result(property = "rePasswdQnA", column = "REPLY_PASSWD")
+            @Result(property = "passwdQnA", column = "GAME_PASSWD")
     })
     @Select("""
             SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, GAME_hits, GAME_recommend
@@ -63,11 +57,10 @@ public interface QnAMapper {
 
     @ResultMap("QnAResult")
     @Select("""
-            SELECT Q.GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER,  TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, 
-            GAME_hits, GAME_recommend, R.REPLY_CONTENT, REPLY_WRITER, TO_CHAR(REPLY_DATE, 'YYYY-MM-DD') AS reDateQnA
-            FROM LOL_QNA Q
-            LEFT OUTER JOIN LOL_QNA_RE R ON Q.GAME_NO = R.GAME_NO
-            WHERE Q.GAME_NO = #{noQnA}
+            SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER,  TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, 
+            GAME_hits, GAME_recommend
+            FROM LOL_QNA
+            WHERE GAME_NO = #{noQnA}
             """)
     Optional<QnADTO> QnADetail(@Param("noQnA") int noQnA);
 

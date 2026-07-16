@@ -17,10 +17,5 @@ public class QnADTO {
     private int hitsQnA;
     private int recommendQnA;
     private String passwdQnA;
-
-    private int reNoQnA;
-    private String reContentQnA;
-    private String reWriterQnA;
-    private String reDateQnA;
-    private String rePasswdQnA;
+    private ReDTO reDTO;
 }

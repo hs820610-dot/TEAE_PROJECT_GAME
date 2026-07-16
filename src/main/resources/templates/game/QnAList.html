@@ -12,7 +12,9 @@
         <br>
         <div class="container d-flex justify-content-between w-75">
             <h2>조회</h2>
-            <div><button type="button" id="QnAWriteButton" class="btn btn-outline-primary btn-md">글 쓰기</button></div>
+            <div>
+                <button type="button" id="QnAWriteButton" class="btn btn-outline-primary btn-md">글 쓰기</button>
+            </div>
         </div>
         <br>
         <table class="table w-75 mx-auto text-center">
@@ -29,7 +31,8 @@
             <tbody>
                 <tr th:each="qna : ${list}" th:object="${qna}">
                     <td th:text="*{noQnA}"></td>
-                    <td><a th:text="*{titleQnA}" th:href="@{/game/QnAHit/{no}(no=*{noQnA})}" class="text-decoration-none"></a></td>
+                    <td><a th:text="*{titleQnA}" th:href="@{/game/QnAHit/{no}(no=*{noQnA})}"
+                           class="text-decoration-none"></a></td>
                     <td th:text="*{writerQnA}"></td>
                     <td th:text="*{dateQnA}"></td>
                     <td th:text="*{hitsQnA}"></td>
@@ -37,13 +40,10 @@
                 </tr>
             </tbody>
         </table>
+
+
+        <script th:src="@{/js/QnAList.js}" defer></script>
     </section>
 
-    <th:block layout:fragment="script">
-        <script src="../js/QnAList.js" defer></script>
-    </th:block>
-    <th:block layout:fragment="css">
-        <link rel="stylesheet" href="../css/QnAList.css">
-    </th:block>
 </body>
 </html>
