@@ -8,5 +8,5 @@ public class patchNoteDTO {
     private String patchDate; // 시간
     private int patchHits; // 조회수
     private int patchRecommend; // 추천수
-    private int pacthPasswd; // 비밀번호
+    private int patchPasswd; // 비밀번호
 }

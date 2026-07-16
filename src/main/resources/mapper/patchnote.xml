@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="">
+<mapper namespace="com.project.game.mapper.patchNoteMapper">
+    <resultMap id="patchNoteResult" type="com.project.game.dto.patchNoteDTO">
+        <result property="patchNumber" column="game_no" />
+        <result property="patchTitle" column="game_title" />
+        <result property="patchContent" column="game_content" />
+        <result property="patchWriter" column="game_write" />
+        <result property="patchDate" column="game_date" />
+        <result property="patchHits" column="game_hits" />
+        <result property="patchRecommend" column="game_recommend" />
+        <result property="patchPasswd" column="game_passwd" />
+    </resultMap>
 
 
 </mapper>
