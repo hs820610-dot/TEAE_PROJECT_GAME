@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/free.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="containerMargin container" layout:fragment="content">
+
+        <div class="d-flex justify-content-between">
+            <h3>자유 게시판 수정</h3>
+        </div>
+
+        <form th:action="@{/LOL/free/update/{gameNo}(gameNo=${free.gameNo})}"
+              method="post">
+
+            <input type="hidden"
+                   name="gameNo"
+                   th:value="${free.gameNo}">
+
+            <table class="table table-bordered">
+
+                <tbody>
+
+                    <tr>
+                        <th class="text-center">제목</th>
+                        <td>
+                            <input type="text" class="form-control" name="gameTitle" th:value="${free.gameTitle}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center">작성자</th>
+                        <td>
+                            <input type="text" class="form-control" name="gameWriter" th:value="${free.gameWriter}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center">작성일</th>
+                        <td th:text="${#temporals.format(free.gameDate, 'yyyy-MM-dd')}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center">비밀번호</th>
+                        <td>
+                            <input type="password" class="form-control" name="gamePasswd" th:value="${free.gamePasswd}">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center">내용</th>
+                        <td>
+                        <textarea class="form-control"
+                                  name="gameContent"
+                                  rows="10"
+                                  th:text="${free.gameContent}">
+                        </textarea>
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+            <div class="text-end mt-3">
+
+                <button type="submit"
+                        class="btn btn-primary">
+                    완료
+                </button>
+
+                <a th:href="@{/LOL/free/detail/{gameNo}(gameNo=${free.gameNo})}"
+                   class="btn btn-secondary">
+                    취소
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+</body>
+</html>
