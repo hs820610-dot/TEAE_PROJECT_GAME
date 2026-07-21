@@ -55,4 +55,17 @@ public class FreeMapperTest {
         log.info("삭제된 행의 수: {}", result);
     }
 
+    @Test
+    public void freeHitsTest() {
+        int gameNo = 62;
+
+        FreeDTO before = freeMapper.freeDetail(gameNo);
+        log.info("변경 전 조회수: {}", before.getGameHits());
+
+        int result = freeMapper.freeHits(gameNo);
+        log.info("UPDATE 결과: {}", result);
+
+        FreeDTO after = freeMapper.freeDetail(gameNo);
+        log.info("변경 후 조회수: {}", after.getGameHits());
+    }
 }

@@ -37,6 +37,7 @@ public class FreeController {
     @GetMapping("/free/detail/{gameNo}")
     public String detail(@PathVariable int gameNo, Model model) {
         FreeDTO freeDTO = freeService.freeDetail(gameNo);
+        freeService.freeHits(gameNo);
         model.addAttribute("free", freeDTO);
 
         return "client/free/detail";

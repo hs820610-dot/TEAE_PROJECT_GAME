@@ -22,7 +22,6 @@
                     <th>작성자</th>
                     <th>날짜</th>
                     <th>조회수</th>
-                    <th>추천</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +33,6 @@
                     <td th:text="${game.gameWriter}"></td>
                     <td th:text="${#temporals.format(game.gameDate, 'yyyy-MM-dd')}"></td>
                     <td th:text="${game.gameHits}"></td>
-                    <td th:text="${game.gameRecommend}"></td>
                 </tr>
             </tbody>
         </table>

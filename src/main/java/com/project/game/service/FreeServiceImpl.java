@@ -36,4 +36,9 @@ public class FreeServiceImpl implements FreeService {
     public int freeDelete(int gameNo) {
         return freeMapper.freeDelete(gameNo);
     }
+
+    @Override
+    public int freeHits(int gameNo) {
+        return freeMapper.freeHits(gameNo);
+    }
 }

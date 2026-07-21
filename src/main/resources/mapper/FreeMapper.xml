@@ -48,4 +48,10 @@
             game_no = #{gameNo}
     </delete>
 
+    <update id="freeHits">
+        UPDATE LOL
+        SET game_hits = game_hits + 1
+        WHERE game_no = #{gameNo}
+    </update>
+
 </mapper>
