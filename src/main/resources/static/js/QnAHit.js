@@ -6,6 +6,7 @@ const pwdArea = document.querySelector("#pwdArea");
 const QnAPassword = document.querySelector("#QnAPassword");
 const QnAPassWordButton = document.querySelector("#QnAPassWordButton");
 
+
 const hidePwd = () => {
      if (pwdArea) pwdArea.classList.add("hide-default");
     QnAPassword.value = "";
@@ -59,9 +60,9 @@ QnADeleteButton.addEventListener("click", async function(){
 });
 
 
-
 QnAUpdateButton.addEventListener("click", function(){
-
-})
+    const num = document.querySelector("#noQnA").value;
+    window.location.href = "/game/QnAModify/"+num;
+});
 
 

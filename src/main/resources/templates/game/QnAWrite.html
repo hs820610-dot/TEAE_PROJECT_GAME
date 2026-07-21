@@ -11,21 +11,23 @@
         <div class=" w-75 mb-4 mx-auto">
             <br>
             <br>
-            <h2>글 작성</h2>
+            <h2 th:text="${qnADTO.noQnA !=null}?'글 수정':'글 작성'"></h2>
             <br>
-            <form method="post" th:action="@{/game/QnAWrite}" id="QnAInsertForm">
-                <table class="table table-borderless">
+            <form method="post" id="QnAInsertUpdateForm">
+                <table class="table table-borderless" th:object="${qnADTO}">
+                    <input type="hidden" name="noQnA" id="noQnA" th:if="*{noQnA}!=null" th:value="*{noQnA}"/>
+
                     <tr>
                         <th><label for="titleQnA">제목</label></th>
                     </tr>
                     <tr>
-                        <td colspan="4"><input type="text" class="form-control" id="titleQnA" name="titleQnA" required>
+                        <td colspan="4"><input type="text" class="form-control" id="titleQnA" name="titleQnA" th:value="*{titleQnA}" required>
                         </td>
                     </tr>
                     <tr>
                         <th class="align-middle text-nowrap" style="width: 1%;"><label for="writerQnA">작성자</label></th>
                         <td><div class="d-flex" style="width: 200px;">
-                            <input type="text" class="form-control" id="writerQnA" name="writerQnA" required></div></td>
+                            <input type="text" class="form-control" id="writerQnA" name="writerQnA" th:value="*{writerQnA}" required></div></td>
                         <th  class="align-middle text-nowrap" style="width: 1%;"><label for="passwdQnA">비밀번호</label></th>
                         <td class="w-100"><div class="d-flex" style="width: 200px;">
                             <input type="password" class="form-control" id="passwdQnA" name="passwdQnA" required></div></td>
@@ -35,20 +37,21 @@
                     </tr>
                     <tr>
                         <td colspan="4"><textarea class="form-control" id="contentQnA" name="contentQnA" required
-                                                  placeholder="내용을 입력하세요"
+                                                  placeholder="내용을 입력하세요" th:text="*{contentQnA}"
                                                   style="resize: none; height: 15rem;"></textarea></td>
                     </tr>
                     <tr>
                         <td colspan="4" class="pt-4">
                             <div class="d-flex justify-content-end gap-2">
-                            <button type="submit" id="QnAInsertButton" class="btn btn-primary btn-md">게시</button>
-                            <a href="/game/QnAList" class="btn btn-danger btn-md">취소</a>
+                            <button type="submit" id="QnAInsertUpdateButton" class="btn btn-primary btn-md" th:text="*{noQnA != null}?'수정':'게시'"></button>
+                            <a th:href="*{noQnA==null}? @{/game/QnAList}:@{/game/QnAHit/{no}(no=${qnADTO.noQnA})}" class="btn btn-danger btn-md">취소</a>
                             </div>
                         </td>
                     </tr>
                 </table>
             </form>
         </div>
+        <script th:src="@{/js/QnAWrite.js}" defer></script>
     </section>
 </body>
 </html>

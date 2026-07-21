@@ -39,7 +39,7 @@ public interface QnAMapper {
     @Update("""
             UPDATE LOL_QNA
                 SET GAME_TITLE = #{titleQnA}, GAME_CONTENT = #{contentQnA},
-                    GAME_PASSWD = COALESCE(#{passwdQnA}, GAME_PASSWD)
+                    GAME_PASSWD = COALESCE(NULLIF(#{passwdQnA, jdbcType=VARCHAR}, ''), GAME_PASSWD)
             WHERE GAME_NO = #{noQnA}
             """)
     int  QnAUpdate(QnADTO qnaDTO);

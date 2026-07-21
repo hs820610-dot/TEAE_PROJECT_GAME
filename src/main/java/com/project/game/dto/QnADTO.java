@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class QnADTO {
-    private int noQnA;
+    private Integer noQnA;
     private String titleQnA;
     private String contentQnA;
     private String writerQnA;

@@ -33,7 +33,7 @@ public class PageResponseDTO<E> {
         this.pageRequestDTO = pageRequestDTO;
         this.totalCount = totalCount;
 
-        int navigateSize = 10;
+        int navigateSize = 5;
         int tempEnd = (int) (Math.ceil(pageRequestDTO.getPage() / (double) navigateSize)) * navigateSize;
 
         this.startPage = tempEnd - navigateSize + 1;

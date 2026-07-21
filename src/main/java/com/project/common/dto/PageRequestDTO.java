@@ -12,7 +12,7 @@ public class PageRequestDTO {
     private String keyword = "";
 
     private int page =1;
-    private int size = 10;
+    private int size = 15;
 
     public int getOffset(){
         return (page - 1) * size;

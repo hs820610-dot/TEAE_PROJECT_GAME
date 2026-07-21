@@ -12,8 +12,7 @@ public interface QnAService {
     List<QnADTO> QnAList();
     int QnAInsert(QnADTO qnaDTO);
     int QnADelete(int noQnA);
-    boolean QnAUpdate(QnADTO qnaDTO, String pwd);
-    int hitsUpdate(int noQnA);
+    boolean QnAUpdate(QnADTO qnaDTO);
     int recommendUpdate(int noQnA);
     int getRecommend(int noQnA);
     QnADTO QnAReDetail(int noQnA);

@@ -24,7 +24,8 @@ public class QnAController {
     }
 
     @GetMapping("/QnAWrite")
-    public String QnAWrite(){
+    public String QnAWrite(Model model){
+        model.addAttribute("qnADTO", new QnADTO());
         return "game/QnAWrite";
     }
 
@@ -33,6 +34,14 @@ public class QnAController {
         qnAService.QnAInsert(qnADTO);
         return "redirect:/game/QnAList";
     }
+
+    @GetMapping("/QnAModify/{noQnA}")
+    public String QnAModify(@PathVariable("noQnA") int noQnA, Model model){
+        QnADTO qnADTO = qnAService.QnAReDetail(noQnA);
+        model.addAttribute("qnADTO", qnADTO);
+        return "game/QnAWrite";
+    }
+
 
     @GetMapping("/QnAHit/{noQnA}")
     public String QnAHit(@PathVariable("noQnA") int noQnA, Model model){
@@ -56,11 +65,9 @@ public class QnAController {
     }
 
     @PostMapping("/QnAUpdate")
-    public String QnAUpdate(QnADTO qnADTO, String pwd, Model model){
+    public String QnAUpdate(QnADTO qnADTO, Model model){
         int no = qnADTO.getNoQnA();
-        qnAService.QnAUpdate(qnADTO, pwd);
-        model.addAttribute("qnADTO", qnADTO);
-        return "redirect:/game/QnAHit"+no;
+        return qnAService.QnAUpdate(qnADTO)?"redirect:/game/QnAHit/"+no:"redirect:/game/QnAList";
     }
 
 

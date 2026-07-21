@@ -32,19 +32,13 @@ public class QnAServiceImpl implements QnAService {
     }
 
     @Override
-    public boolean QnAUpdate(QnADTO qnaDTO,  String pwd) {
+    public boolean QnAUpdate(QnADTO qnaDTO) {
         int no = qnaDTO.getNoQnA();
-
-        if (!qnaDTO.getPasswdQnA().equals(pwd)) {
-            return false;
+        if ("".equals(qnaDTO.getPasswdQnA())) {
+            qnaDTO.setPasswdQnA(null);
         }
         qnAMapper.QnAUpdate(qnaDTO);
         return true;
-    }
-
-    @Override
-    public int hitsUpdate(int noQnA) {
-        return qnAMapper.hitsUpdate(noQnA);
     }
 
     @Override
@@ -59,6 +53,7 @@ public class QnAServiceImpl implements QnAService {
 
     @Override
     public QnADTO QnAReDetail(int noQnA) {
+        qnAMapper.hitsUpdate(noQnA);
         QnADTO qnADTO = qnAMapper.QnADetail(noQnA)
                 .orElseThrow(()->new IllegalArgumentException("존재하지 않는 게시글입니다."));
         ReDTO reDTO = reMapper.replyDetail(noQnA);
