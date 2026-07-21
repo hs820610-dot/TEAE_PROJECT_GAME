@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.game.mapper.FreeMapper">
+    <resultMap id="resultMap" type="com.project.game.dto.FreeDTO">
+        <result column="game_no" property="gameNo"></result>
+        <result column="game_title" property="gameTitle"></result>
+        <result column="game_content" property="gameContent"></result>
+        <result column="game_writer" property="gameWriter"></result>
+        <result column="game_date" property="gameDate"></result>
+        <result column="game_hits" property="gameHits"></result>
+        <result column="game_recommend" property="gameRecommend"></result>
+        <result column="game_passwd" property="gamePasswd"></result>
+    </resultMap>
+
+    <select id="freeList" resultMap="resultMap">
+        SELECT
+            game_no, game_title, game_content, game_writer, game_date, game_hits, game_recommend, game_passwd
+        FROM
+            LOL
+        ORDER BY game_no DESC
+    </select>
+
+    <select id="freeDetail" parameterType="int" resultMap="resultMap">
+        SELECT
+        game_no, game_title, game_content, game_writer, game_date, game_hits, game_recommend, game_passwd
+        FROM
+            LOL
+        WHERE game_no = #{gameNo}
+    </select>
+
+    <insert id="freeInsert" parameterType="com.project.game.dto.FreeDTO">
+        INSERT INTO LOL(game_title, game_content, game_writer, game_passwd)
+        VALUES (#{gameTitle}, #{gameContent}, #{gameWriter}, #{gamePasswd})
+    </insert>
+
+    <update id="freeUpdate" parameterType="com.project.game.dto.FreeDTO">
+        UPDATE lol SET
+            game_title = #{gameTitle}, game_content = #{gameContent}
+        WHERE
+            game_no = #{gameNo}
+    </update>
+
+    <delete id="freeDelete" parameterType="int">
+        DELETE
+        FROM
+            lol
+        WHERE
+            game_no = #{gameNo}
+    </delete>
+
+    <update id="freeHits">
+        UPDATE LOL
+        SET game_hits = game_hits + 1
+        WHERE game_no = #{gameNo}
+    </update>
+
+</mapper>
