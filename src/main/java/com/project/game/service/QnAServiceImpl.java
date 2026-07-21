@@ -1,5 +1,6 @@
 package com.project.game.service;
 
+import com.project.common.dto.PageRequestDTO;
 import com.project.game.dto.QnADTO;
 import com.project.game.dto.ReDTO;
 import com.project.game.mapper.QnAMapper;
@@ -59,5 +60,20 @@ public class QnAServiceImpl implements QnAService {
         ReDTO reDTO = reMapper.replyDetail(noQnA);
         qnADTO.setReDTO(reDTO);
         return qnADTO;
+    }
+
+    @Override
+    public int pwdCheck(QnADTO qnaDTO) {
+        return qnAMapper.pwdCheck(qnaDTO);
+    }
+
+    @Override
+    public int countPage(PageRequestDTO pageRequestDTO) {
+        return qnAMapper.countPage(pageRequestDTO);
+    }
+
+    @Override
+    public List<QnADTO> postList(PageRequestDTO pageRequestDTO) {
+        return qnAMapper.postList(pageRequestDTO);
     }
 }

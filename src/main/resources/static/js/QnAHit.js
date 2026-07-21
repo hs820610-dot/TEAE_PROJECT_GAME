@@ -20,7 +20,7 @@ const veiwPwd = () => {
 QnARecommendButton.addEventListener("click", async function(){
     const num = document.querySelector("#noQnA").value;
     try{
-        const response = await fetch(`/game/QnAHit/${num}`, {
+        const response = await fetch(`/client/QnA/QnAHit/${num}`, {
             method: "POST"
         });
 
@@ -44,12 +44,12 @@ QnADeleteButton.addEventListener("click", async function(){
    const num = document.querySelector("#noQnA").value;
 
    try{
-       const response = await fetch(`/game/QnADelete/${num}`, {
+       const response = await fetch(`/client/QnA/QnADelete/${num}`, {
            method: "POST"
        });
        if (response.ok) {
            alert("삭제되었습니다.")
-           location.href = "/game/QnAList";
+           location.href = "/client/QnA/QnAList";
        }else{
            alert("failed");
        }
@@ -62,7 +62,7 @@ QnADeleteButton.addEventListener("click", async function(){
 
 QnAUpdateButton.addEventListener("click", function(){
     const num = document.querySelector("#noQnA").value;
-    window.location.href = "/game/QnAModify/"+num;
+    window.location.href = "/client/QnA/QnAModify/"+num;
 });
 
 

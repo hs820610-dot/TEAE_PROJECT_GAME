@@ -1,6 +1,6 @@
 const QnAWriteButton = document.querySelector("#QnAWriteButton");
 
 QnAWriteButton.addEventListener("click", () => {
-    window.location.href = "/game/QnAWrite";
+    window.location.href = "/client/QnA/QnAWrite";
 });
 

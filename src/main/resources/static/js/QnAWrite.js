@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (passwd.value.trim()==="" && editMode){
             passwd.disabled = true;
         }
-        form.action = editMode? '/game/QnAUpdate':'/game/QnAWrite';
+        form.action = editMode? '/client/QnA/QnAUpdate':'/client/QnA/QnAWrite';
         form.submit();
     });
 });

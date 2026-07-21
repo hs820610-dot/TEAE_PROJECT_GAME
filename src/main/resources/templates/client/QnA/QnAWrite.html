@@ -44,7 +44,7 @@
                         <td colspan="4" class="pt-4">
                             <div class="d-flex justify-content-end gap-2">
                             <button type="submit" id="QnAInsertUpdateButton" class="btn btn-primary btn-md" th:text="*{noQnA != null}?'수정':'게시'"></button>
-                            <a th:href="*{noQnA==null}? @{/game/QnAList}:@{/game/QnAHit/{no}(no=${qnADTO.noQnA})}" class="btn btn-danger btn-md">취소</a>
+                            <a th:href="*{noQnA==null}? @{/client/QnA/QnAList}:@{/client/QnA/QnAHit/{no}(no=${qnADTO.noQnA})}" class="btn btn-danger btn-md">취소</a>
                             </div>
                         </td>
                     </tr>

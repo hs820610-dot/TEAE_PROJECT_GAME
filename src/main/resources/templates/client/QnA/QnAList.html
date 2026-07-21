@@ -31,7 +31,7 @@
             <tbody>
                 <tr th:each="qna : ${list}" th:object="${qna}">
                     <td th:text="*{noQnA}"></td>
-                    <td><a th:text="*{titleQnA}" th:href="@{/game/QnAHit/{no}(no=*{noQnA})}"
+                    <td><a th:text="*{titleQnA}" th:href="@{/client/QnA/QnAHit/{no}(no=*{noQnA})}"
                            class="text-decoration-none"></a></td>
                     <td th:text="*{writerQnA}"></td>
                     <td th:text="*{dateQnA}"></td>
@@ -40,8 +40,22 @@
                 </tr>
             </tbody>
         </table>
+        <br>
 
-
+        <nav th:if="${pageResponse.totalCount > 0}" arial-label="Page navigation">
+            <ul class="pageination justify-content-center">
+                <li class="page-item" th:if="$pageResponse.previous">
+                    <a href="#" th:data-page="${pageResponse.startPage-1}" class="page-link">이전</a>
+                </li>
+                <li th:each="number: ${#numbers.sequence(pageResponse.startPage, pageResponse.endPage)}"
+                    th:classappend="page-item'+${(pageResponse.pageRequestDTO.page==number) ? 'active':''}">
+                    <a href="#" th:data-page="${number}" class="page-link" th:text="${number}"></a>
+                </li>
+                <li class="page-item" th:if="${pageResponse.next}">
+                    <a href="#" th:data-page="${pageResponse.endPage+1}" class="page-link">다음</a>
+                </li>
+            </ul>
+        </nav>
 
         <script th:src="@{/js/QnAList.js}" defer></script>
     </section>

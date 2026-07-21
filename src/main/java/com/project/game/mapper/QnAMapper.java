@@ -1,5 +1,6 @@
 package com.project.game.mapper;
 
+import com.project.common.dto.PageRequestDTO;
 import com.project.game.dto.QnADTO;
 import org.apache.ibatis.annotations.*;
 
@@ -64,7 +65,16 @@ public interface QnAMapper {
             """)
     Optional<QnADTO> QnADetail(@Param("noQnA") int noQnA);
 
+    @Select("""
+            SELECT COUNT(*) FROM LOL_QNA
+            WHERE GAME_NO = #{noQnA} AND GAME_PASSWD = #{passwdQnA}
+            """)
+    int pwdCheck(QnADTO qnaDTO);
 
+    @SelectProvider(type = QnASqlProvider.class, method = "countPage")
+    int countPage(PageRequestDTO pageRequestDTO);
 
-
+    @ResultMap("QnAResult")
+    @SelectProvider(type = QnASqlProvider.class, method = "postList")
+    List<QnADTO> postList(PageRequestDTO pageRequestDTO);
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/game")
+@RequestMapping("client/game")
 public class PatchNoteController {
     private final PatchNoteService patchNoteService;
 
@@ -34,7 +34,7 @@ public class PatchNoteController {
     @PostMapping("/delete")
     public String patchDelete(int patchNumber) {
         patchNoteService.patchDelete(patchNumber);
-        return "redirect:/game/patchList";
+        return "redirect:client/game/patchList";
     }
 
 }
