@@ -31,7 +31,8 @@ public class QnASqlProvider {
 
         sql.append("SELECT GAME_NO, GAME_TITLE, GAME_CONTENT, GAME_WRITER, TO_CHAR(GAME_DATE, 'YYYY-MM-DD') AS dateQnA, GAME_hits, GAME_recommend FROM LOL_QNA ");
         wherePassage(sql, pageRequestDTO);
-        sql.append(" ORDER BY GAME_NO DESC");
+        sql.append(" ORDER BY GAME_NO DESC ");
+        sql.append(" OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY ");
 
         return sql.toString();
     }

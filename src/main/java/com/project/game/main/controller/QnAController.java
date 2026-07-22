@@ -21,7 +21,8 @@ public class QnAController {
     @GetMapping("/QnAList")
     public String QnAList(Model model, PageRequestDTO pageRequestDTO) {
         PageResponseDTO pageResponseDTO = qnAService.selectQnAList(pageRequestDTO);
-        model.addAttribute("list", pageResponseDTO);
+        model.addAttribute("list", pageResponseDTO.getList());
+        model.addAttribute("page", pageResponseDTO);
         return "/client/QnA/QnAList";
     }
 
@@ -47,6 +48,8 @@ public class QnAController {
     @GetMapping("/QnAHit/{noQnA}")
     public String QnAHit(@PathVariable("noQnA") int noQnA, Model model){
         QnADTO qnADTO = qnAService.QnAReDetail(noQnA);
+        System.out.println("=== QnA 정보: " + qnADTO);
+        System.out.println("=== reDTO 답변 정보: " + qnADTO.getReDTO());
         model.addAttribute("qnADTO", qnADTO);
         return "/client/QnA/QnAHit";
     }
