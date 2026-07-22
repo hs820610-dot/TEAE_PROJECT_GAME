@@ -19,7 +19,5 @@ public interface QnAService {
     int getRecommend(int noQnA);
     QnADTO QnAReDetail(int noQnA);
     int pwdCheck(QnADTO qnaDTO);
-    int countPage(PageRequestDTO pageRequestDTO);
-    List<QnADTO> postList(PageRequestDTO pageRequestDTO);
-    PageResponseDTO<>
+    PageResponseDTO<QnADTO> selectQnAList(PageRequestDTO pageRequestDTO);
 }

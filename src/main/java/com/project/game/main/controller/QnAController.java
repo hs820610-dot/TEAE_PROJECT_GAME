@@ -1,6 +1,7 @@
 package com.project.game.main.controller;
 
 import com.project.common.dto.PageRequestDTO;
+import com.project.common.dto.PageResponseDTO;
 import com.project.game.dto.QnADTO;
 import com.project.game.service.QnAService;
 import lombok.RequiredArgsConstructor;
@@ -19,8 +20,8 @@ public class QnAController {
 
     @GetMapping("/QnAList")
     public String QnAList(Model model, PageRequestDTO pageRequestDTO) {
-        List<QnADTO> list = qnAService.postList(pageRequestDTO);
-        model.addAttribute("list", list);
+        PageResponseDTO pageResponseDTO = qnAService.selectQnAList(pageRequestDTO);
+        model.addAttribute("list", pageResponseDTO);
         return "/client/QnA/QnAList";
     }
 

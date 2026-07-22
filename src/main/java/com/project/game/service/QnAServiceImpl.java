@@ -1,6 +1,7 @@
 package com.project.game.service;
 
 import com.project.common.dto.PageRequestDTO;
+import com.project.common.dto.PageResponseDTO;
 import com.project.game.dto.QnADTO;
 import com.project.game.dto.ReDTO;
 import com.project.game.mapper.QnAMapper;
@@ -68,12 +69,8 @@ public class QnAServiceImpl implements QnAService {
     }
 
     @Override
-    public int countPage(PageRequestDTO pageRequestDTO) {
-        return qnAMapper.countPage(pageRequestDTO);
-    }
-
-    @Override
-    public List<QnADTO> postList(PageRequestDTO pageRequestDTO) {
-        return qnAMapper.postList(pageRequestDTO);
+    public PageResponseDTO<QnADTO> selectQnAList(PageRequestDTO pageRequestDTO) {
+        int count = qnAMapper.countPage(pageRequestDTO);
+        return new PageResponseDTO(qnAMapper.postList(pageRequestDTO), pageRequestDTO, count);
     }
 }
