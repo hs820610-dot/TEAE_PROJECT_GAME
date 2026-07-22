@@ -5,7 +5,6 @@
       layout:decorate="~{layout/layout}">
 <head>
     <title>상세 조회</title>
-    <link rel="stylesheet" th:href="@{/css/QnAHit.css}"/>
 </head>
 <body>
     <section layout:fragment="content">
@@ -72,10 +71,13 @@
             </tr>
         </table>
 
-
         <script th:src="@{/js/QnAHit.js}" defer></script>
     </section>
 
+
+    <th:th:block layout:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/QnAHit.css}"/>
+    </th:th:block>
 
 </body>
 </html>
