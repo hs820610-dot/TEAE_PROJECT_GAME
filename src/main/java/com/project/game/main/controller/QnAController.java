@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/client/QnA")
 public class QnAController {
-
     private final QnAService qnAService;
 
     @GetMapping("/QnAList")

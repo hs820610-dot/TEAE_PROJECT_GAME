@@ -4,7 +4,7 @@ import com.project.game.dto.ReDTO;
 import org.apache.ibatis.annotations.*;
 
 @Mapper
-public interface ReMapper {
+public interface QnAReMapper {
     @Results(id="replyResult", value = {
             @Result(property = "reContentQnA", column = "REPLY_CONTENT"),
             @Result(property = "reWriterQnA", column = "REPLY_WRITER"),

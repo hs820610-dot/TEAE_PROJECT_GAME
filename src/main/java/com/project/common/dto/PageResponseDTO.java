@@ -12,12 +12,6 @@ import java.util.List;
 public class PageResponseDTO<E> {
     private final List<E> list;
     private final PageRequestDTO pageRequestDTO;
-    /*
-    public PageResponseDTO(List<E> list, PageRequestDTO pageRequestDTO) {
-        this.list = list;
-        this.pageRequestDTO = pageRequestDTO;
-    }
-     */
 
     private final int startPage;
     private final int endPage;

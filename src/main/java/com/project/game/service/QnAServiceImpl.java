@@ -5,18 +5,17 @@ import com.project.common.dto.PageResponseDTO;
 import com.project.game.dto.QnADTO;
 import com.project.game.dto.ReDTO;
 import com.project.game.mapper.QnAMapper;
-import com.project.game.mapper.ReMapper;
+import com.project.game.mapper.QnAReMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class QnAServiceImpl implements QnAService {
     private final QnAMapper qnAMapper;
-    private final ReMapper reMapper;
+    private final QnAReMapper reMapper;
 
     @Override
     public List<QnADTO> QnAList() {
