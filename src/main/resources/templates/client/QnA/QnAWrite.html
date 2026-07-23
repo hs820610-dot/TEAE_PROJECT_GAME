@@ -51,7 +51,10 @@
                 </table>
             </form>
         </div>
-        <script th:src="@{/js/QnAWrite.js}" defer></script>
     </section>
+
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/QnAWrite.js}" defer></script>
+    </th:block>
 </body>
 </html>

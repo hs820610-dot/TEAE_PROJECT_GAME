@@ -70,14 +70,15 @@
                 </td>
             </tr>
         </table>
-
-        <script th:src="@{/js/QnAHit.js}" defer></script>
     </section>
 
 
     <th:th:block layout:fragment="css">
         <link rel="stylesheet" th:href="@{/css/QnAHit.css}"/>
     </th:th:block>
+    <th:block layout:fragment="script">
+        <script th:src="@{/js/QnAHit.js}" defer></script>
+    </th:block>
 
 </body>
 </html>
